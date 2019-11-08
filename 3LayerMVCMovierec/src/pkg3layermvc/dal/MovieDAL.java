@@ -25,24 +25,34 @@ public class MovieDAL {
     private static final String MOVIE_SOURCE = "data/movie_titles.txt";
     
     
-    public List<Movie> getAllMovies() throws FileNotFoundException, IOException{
-        ArrayList<Movie> movies = new ArrayList<>();
-        File file = new File(MOVIE_SOURCE);
-        
-        FileReader fr = new FileReader(file);
-        BufferedReader br =  new BufferedReader(fr);
+    public List<Movie> getAllMovies() throws FileNotFoundException, IOException
+    {
+       try (BufferedReader br = new BufferedReader(new FileReader(new File(MOVIE_SOURCE))))
+       {
+           
+           ArrayList<Movie> allmovies = new ArrayList<>(); 
+           
+           while (true)
+           {
+               String alineoftext = br.readLine();
+               if (alineoftext == null) 
+               {
+                    break;
+               }
+               else
+               {
+                   //Todo make a movie from a line of text
+               }
+               {
+                    System.out.println(br.readLine());
+               }
+            return allmovies;
+           }
+       }
        
-        while (true) {            
-            
-            String alineoftext = br.readLine();
-            if (alineoftext == null) {
-                break;
-            }
-            else{
-            System.out.println(br.readLine());
-            }
-            
-        }
+        
+       
+        
         
         
         
